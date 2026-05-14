@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  poo_agentes:
+    build: .
+    container_name: agentes_ia_app
+    volumes:
+      - .:/app
+    # Configurações essenciais para permitir inputs no terminal interativo (cin)
+    stdin_open: true 
+    tty: true
