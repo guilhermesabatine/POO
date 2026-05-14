@@ -1,10 +1,14 @@
+# Utiliza a imagem oficial do GCC
 FROM gcc:latest
 
+# Define o diretório de trabalho dentro do container
 WORKDIR /app
 
+# Copia os arquivos do diretório atual para o container
 COPY . /app
 
-# O comando de compilação agora aponta para jinx.cpp
-RUN g++ -o sistema_agentes main.cpp jinx.cpp
+# Compila o código C++
+RUN g++ -o sistema_agentes main.cpp AgenteIA.cpp
 
+# Comando padrão para executar a aplicação interativa
 CMD ["./sistema_agentes"]

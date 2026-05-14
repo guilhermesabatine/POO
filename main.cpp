@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "perry.h"
+#include "AgenteIA.h"
 
 using namespace std;
 

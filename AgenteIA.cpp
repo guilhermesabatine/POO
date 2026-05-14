@@ -1,4 +1,4 @@
-#include "perry.h"
+#include "AgenteIA.h"
 #include <iostream>
 #include <fstream>
 #include <ctime>
@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// Função auxiliar para registrar logs 
 void AgenteIA::registrarLog(const string& evento) const {
     ofstream arquivo("log_execucao.txt", ios::app);
     if (arquivo.is_open()) {
@@ -18,18 +19,21 @@ void AgenteIA::registrarLog(const string& evento) const {
     }
 }
 
+// Construtor Padrão [cite: 16]
 AgenteIA::AgenteIA() : nome("Desconhecido"), especialidade("Nenhuma"), nivelEnergia(100), tarefasConcluidas(0) {
     registrarLog("Agente padrao criado.");
 }
 
+// Construtor Parametrizado [cite: 16]
 AgenteIA::AgenteIA(string n, string esp, int energia) {
     nome = n;
     especialidade = esp;
-    nivelEnergia = (energia >= 0) ? energia : 0; 
+    nivelEnergia = (energia >= 0) ? energia : 0; // Validação 
     tarefasConcluidas = 0;
     registrarLog("Agente " + nome + " criado.");
 }
 
+// Construtor de Cópia [cite: 17, 18]
 AgenteIA::AgenteIA(const AgenteIA& outro) {
     nome = outro.nome + "_Copia";
     especialidade = outro.especialidade;
@@ -38,14 +42,16 @@ AgenteIA::AgenteIA(const AgenteIA& outro) {
     registrarLog("Agente " + nome + " copiado do agente " + outro.nome + ".");
 }
 
+// Destrutor [cite: 23]
 AgenteIA::~AgenteIA() {
-    cout << "Liberando agente " << nome << " da memoria..." << endl; 
+    cout << "Liberando agente " << nome << " da memoria..." << endl; // Mensagem obrigatória [cite: 23, 24]
     registrarLog("Agente " + nome + " destruido.");
 }
 
 std::string AgenteIA::getNome() const { return nome; }
 int AgenteIA::getNivelEnergia() const { return nivelEnergia; }
 
+// Exibir status do agente [cite: 12]
 void AgenteIA::exibirStatus() const {
     cout << "--- Status do Agente ---" << endl;
     cout << "Nome: " << nome << endl;
@@ -55,17 +61,19 @@ void AgenteIA::exibirStatus() const {
     cout << "------------------------" << endl;
 }
 
+// Executar tarefa [cite: 12]
 void AgenteIA::executarTarefa(int custoEnergia) {
-    if (nivelEnergia >= custoEnergia) { 
+    if (nivelEnergia >= custoEnergia) { // Regra: sem energia não executa [cite: 26]
         nivelEnergia -= custoEnergia;
-        tarefasConcluidas++; 
+        tarefasConcluidas++; // Tarefas não decrementadas manualmente [cite: 15]
         cout << "Tarefa executada com sucesso pelo agente " << nome << "!" << endl;
-        registrarLog("Tarefa executada por " + nome + ". Energia reduzida para " + to_string(nivelEnergia) + "."); 
+        registrarLog("Tarefa executada por " + nome + ". Energia reduzida para " + to_string(nivelEnergia) + "."); // [cite: 43]
     } else {
         cout << "Erro: O agente " << nome << " nao tem energia suficiente para esta tarefa." << endl;
     }
 }
 
+// Recarregar energia [cite: 12]
 void AgenteIA::recarregarEnergia(int quantidade) {
     if (quantidade > 0) {
         nivelEnergia += quantidade;
