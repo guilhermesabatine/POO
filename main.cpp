@@ -17,8 +17,8 @@ int main() {
     // Identificação Obrigatória [cite: 45]
     cout << "========================================" << endl;
     cout << "DISCIPLINA: POO EM C++" << endl;
-    cout << "ALUNO: [SEU NOME AQUI]" << endl;
-    cout << "ID ENTREGA: TUTORIAL-2026-ALUNO" << endl;
+    cout << "ALUNO: Guilherme Henrique da Silva Sabatine (2023200681)" << endl;
+    cout << "ID ENTREGA: TUTORIAL-2026-Guilherme Henrique da Silva Sabatine (2023200681)" << endl;
     cout << "========================================" << endl << endl;
 
     // Instanciação Estática [cite: 20]

@@ -9,3 +9,4 @@ services:
     # Configurações essenciais para permitir inputs no terminal interativo (cin)
     stdin_open: true 
     tty: true
+    comand: ./sistema_agentes
