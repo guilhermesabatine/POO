@@ -10,7 +10,7 @@ WORKDIR /app
 COPY . .
 
 # Compila todos os .cpp em um único binário
-RUN g++ -std=c++17 -o sistema_agentes *.cpp
+RUN g++ -std=c++17 -o sistema_agentes main.cpp AgenteIA.cpp
 
 # Executa o binário automaticamente ao iniciar o container
-#CMD ["./sistema_agentes"]
+CMD ["./sistema_agentes"]
