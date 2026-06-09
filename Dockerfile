@@ -1,16 +1,14 @@
-FROM debian:bookworm-slim
+# Utiliza a imagem oficial do GCC
+FROM gcc:latest
 
-# Instala apenas o compilador C++
-RUN apt-get update && apt-get install -y g++ && rm -rf /var/lib/apt/lists/*
-
-# Define diretório de trabalho
+# Define o diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copia os arquivos do projeto
-COPY . .
+# Copia os arquivos do diretório atual para o container
+COPY . /app
 
-# Compila todos os .cpp em um único binário
-RUN g++ -std=c++17 -o sistema_agentes main.cpp AgenteIA.cpp
+# Compila o código C++
+RUN g++ -o sistema_agentes main.cpp AgenteIA.cpp
 
-# Executa o binário automaticamente ao iniciar o container
+# Comando padrão para executar a aplicação interativa
 CMD ["./sistema_agentes"]
