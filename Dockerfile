@@ -13,4 +13,4 @@ COPY . .
 RUN g++ -std=c++17 -o sistema_agentes *.cpp
 
 # Executa o binário automaticamente ao iniciar o container
-CMD ["./sistema_agentes"]
+#CMD ["./sistema_agentes"]
