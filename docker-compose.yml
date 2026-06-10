@@ -1,12 +1,11 @@
-version: '3.8'
-
+version: "3.8"
 services:
   poo_agentes:
-    build: .
-    container_name: agentes_ia_app
+    image: gcc:latest
+    container_name: poo_agentes
+    working_dir: /app
     volumes:
       - .:/app
-    # Configurações essenciais para permitir inputs no terminal interativo (cin)
-    stdin_open: true 
+    command: bash -c "g++ -std=c++17 -o sistema_agentes main.cpp AgenteIA.cpp && ./sistema_agentes"
+    stdin_open: true
     tty: true
-    command: ./sistema_agentes
