@@ -1,11 +1,9 @@
 version: "3.8"
 services:
   poo_agentes:
-    image: gcc:latest
+    build: .
     container_name: poo_agentes
     working_dir: /app
-    volumes:
-      - .:/app
     command: bash -c "g++ -std=c++17 -o sistema_agentes main.cpp AgenteIA.cpp && ./sistema_agentes"
     stdin_open: true
     tty: true
